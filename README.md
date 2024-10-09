@@ -13,7 +13,6 @@ Cleanup Mechanism: Automatically removes expired cache entries.
 - **gRPC Service**: Implements a gRPC server with methods for cache operations.
 - **Unit Testing**: Includes comprehensive unit tests for all cache operations.
 - **Cleanup Mechanism**: Automatically removes expired cache entries.
-
-- ## Technologies Used
+## Technologies Used
 - **gRPC**: Used for remote procedure calls.
 - **Protocol Buffers**: For defining the gRPC service and message types.
