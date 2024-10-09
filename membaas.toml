@@ -1,0 +1,8 @@
+[network]
+address = "127.0.0.1:50051"
+
+[log]
+level = "debug"
+
+[tls]
+insecure = false

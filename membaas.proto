@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package memBaas;
+option go_package = "internal/proto";
+
+
+message SetRequest {
+  string key = 1;
+  string value = 2;
+  int64 ttl = 3;
+  bool overwrite = 4;
+}
+
+message SetResponse {
+  enum setStatus {
+      OK = 0;
+      ERROR = 1;
+      NOT_UNIQUE = 2;
+      OVERWRITTEN = 3;
+      INVALID_KEY = 4;
+      INVALID_VALUE = 5;
+      INVALID_TTL = 6;
+  }
+  setStatus status = 1;
+  string message = 2;
+}
+
+message GetRequest {
+  string key = 2;
+}
+
+message GetResponse {
+  enum getStatus {
+    OK = 0;
+    ERROR = 1;
+    NOT_FOUND = 2;
+  }
+  getStatus status = 1;
+  string value = 2;
+  int64 ttl = 3;
+}
+
+service server {
+  rpc Get(GetRequest) returns (GetResponse) {}
+  rpc Set(SetRequest) returns (SetResponse) {}
+  rpc Delete(GetRequest) returns (GetResponse) {}
+}
